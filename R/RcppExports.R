@@ -17,6 +17,14 @@ cal_list_holidays_cpp <- function(cal_sexp, from, to, include_weekends) {
     .Call(`_calendarrr_cal_list_holidays_cpp`, cal_sexp, from, to, include_weekends)
 }
 
+cal_is_weekend_cpp <- function(cal_sexp, dates) {
+    .Call(`_calendarrr_cal_is_weekend_cpp`, cal_sexp, dates)
+}
+
+cal_adjust_cpp <- function(cal_sexp, dates) {
+    .Call(`_calendarrr_cal_adjust_cpp`, cal_sexp, dates)
+}
+
 rcpp_hello_world <- function() {
     .Call(`_calendarrr_rcpp_hello_world`)
 }

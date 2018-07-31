@@ -1,6 +1,6 @@
 #include "ql/time/calendar.hpp"
 #include "ql/time/date.hpp"
-#include "cal_ql_wrapper_types_date_impl.hpp"
+#include "cal_ql_wrapper_types_date.hpp"
 using namespace QuantLib;  
 
 #include <Rcpp.h>

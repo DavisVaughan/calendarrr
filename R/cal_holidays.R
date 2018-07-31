@@ -1,17 +1,16 @@
 #' @export
-cal_add_holidays <- function(holidays) {
-  cal <- cal_get_calendar()
+cal_add_holidays <- function(cal, holidays) {
   cal$add_holidays(holidays)
+  cal
 }
 
 #' @export
-cal_remove_holidays <- function(holidays) {
-  cal <- cal_get_calendar()
+cal_remove_holidays <- function(cal, holidays) {
   cal$remove_holidays(holidays)
+  cal
 }
 
 #' @export
-cal_get_holidays <- function(from, to, include_weekends = FALSE) {
-  cal <- cal_get_calendar()
+cal_get_holidays <- function(cal, from, to, include_weekends = FALSE) {
   cal$get_holidays(from, to, include_weekends)
 }

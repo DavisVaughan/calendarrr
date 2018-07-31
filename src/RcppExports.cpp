@@ -55,6 +55,30 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cal_is_weekend_cpp
+std::vector<bool> cal_is_weekend_cpp(SEXP cal_sexp, std::vector<QuantLib::Date> dates);
+RcppExport SEXP _calendarrr_cal_is_weekend_cpp(SEXP cal_sexpSEXP, SEXP datesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type cal_sexp(cal_sexpSEXP);
+    Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type dates(datesSEXP);
+    rcpp_result_gen = Rcpp::wrap(cal_is_weekend_cpp(cal_sexp, dates));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cal_adjust_cpp
+std::vector<QuantLib::Date> cal_adjust_cpp(SEXP cal_sexp, std::vector<QuantLib::Date> dates);
+RcppExport SEXP _calendarrr_cal_adjust_cpp(SEXP cal_sexpSEXP, SEXP datesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type cal_sexp(cal_sexpSEXP);
+    Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type dates(datesSEXP);
+    rcpp_result_gen = Rcpp::wrap(cal_adjust_cpp(cal_sexp, dates));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rcpp_hello_world
 NumericVector rcpp_hello_world();
 RcppExport SEXP _calendarrr_rcpp_hello_world() {
@@ -71,6 +95,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_calendarrr_cal_add_holiday_cpp", (DL_FUNC) &_calendarrr_cal_add_holiday_cpp, 2},
     {"_calendarrr_cal_remove_holiday_cpp", (DL_FUNC) &_calendarrr_cal_remove_holiday_cpp, 2},
     {"_calendarrr_cal_list_holidays_cpp", (DL_FUNC) &_calendarrr_cal_list_holidays_cpp, 4},
+    {"_calendarrr_cal_is_weekend_cpp", (DL_FUNC) &_calendarrr_cal_is_weekend_cpp, 2},
+    {"_calendarrr_cal_adjust_cpp", (DL_FUNC) &_calendarrr_cal_adjust_cpp, 2},
     {"_calendarrr_rcpp_hello_world", (DL_FUNC) &_calendarrr_rcpp_hello_world, 0},
     {NULL, NULL, 0}
 };

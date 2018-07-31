@@ -1,12 +1,15 @@
+// Here are the defintions of the types that get wrapped and as-ed
+// Additionally, at the bottom are custom typdefs we want to use in the package
+
 #ifndef _cal_ql_wrapper_types_date_h_
 #define _cal_ql_wrapper_types_date_h_
-
-// Include RcppCommon.h NOT Rcpp.h
-#include <RcppCommon.h>
 
 // Date types located here
 #include "ql/time/date.hpp"
 #include "ql/time/calendars/unitedstates.hpp"
+
+// Include RcppCommon.h NOT Rcpp.h
+#include <RcppCommon.h>
 
 // Definitions of all date-like conversions
 namespace Rcpp {
@@ -30,6 +33,13 @@ namespace Rcpp {
   template <> 
   QuantLib::UnitedStates::Market as(SEXP market_enum_val);
 
+}
+
+// Now we can include Rcpp.h and other types we want to define
+#include <Rcpp.h>
+
+namespace Rcpp {
+  typedef Rcpp::XPtr<QuantLib::Calendar> XPtrToCalendar;
 }
 
 #endif

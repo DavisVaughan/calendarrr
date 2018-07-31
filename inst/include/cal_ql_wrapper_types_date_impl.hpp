@@ -10,8 +10,6 @@ using namespace Rcpp;
 // Implementations of all date-like conversions
 namespace Rcpp {
 
-  typedef Rcpp::XPtr<QuantLib::Calendar> XPtrToCalendar;
-
   // Offset to R / Unix epoch 
   static const unsigned int ql_to_jan_1970_offset = 25569;
   
