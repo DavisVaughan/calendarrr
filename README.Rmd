@@ -19,6 +19,19 @@ The goal of `calendarrr` is to provide an R frontend to the `QuantLib` _Calendar
 library. This package shamelessly rips out sections of `QuantLib` corresponding
 to calendar calculations, and exposes them as the S3 class, `calendar`.
 
+## Related work
+
+The `RQuantLib` package exposes some of this as well, but in a different form
+and as a subset of a larger purpose of exposing the entire `QuantLib` library. 
+There are a few benefits of `calendarrr` vs `RQuantLib`. 
+
+- `RQuantLib` does not have the ability to add custom holidays.
+- `RQuantLib` requires that you install `QuantLib` yourself (at least on Mac),
+which can be a major pain and raise the barrier to entry significantly. `calendarrr`
+is self-contained.
+- `calendarrr` tries to focus on providing a consistent and user friendly interface to the
+calendar library.
+
 ## Installation
 
 You can install the released version of calendarrr from [CRAN](https://CRAN.R-project.org) with:

@@ -8,6 +8,20 @@ The goal of `calendarrr` is to provide an R frontend to the `QuantLib`
 `QuantLib` corresponding to calendar calculations, and exposes them as
 the S3 class, `calendar`.
 
+## Related work
+
+The `RQuantLib` package exposes some of this as well, but in a different
+form and as a subset of a larger purpose of exposing the entire
+`QuantLib` library. There are a few benefits of `calendarrr` vs
+`RQuantLib`.
+
+  - `RQuantLib` does not have the ability to add custom holidays.
+  - `RQuantLib` requires that you install `QuantLib` yourself (at least
+    on Mac), which can be a major pain and raise the barrier to entry
+    significantly. `calendarrr` is self-contained.
+  - `calendarrr` tries to focus on providing a consistent and user
+    friendly interface to the calendar library.
+
 ## Installation
 
 You can install the released version of calendarrr from
@@ -145,12 +159,12 @@ microbenchmark::microbenchmark(
   lub_end_of_month(dates)
 )
 #> Unit: microseconds
-#>                          expr      min       lq      mean   median
-#>  cal_end_of_month(dates, usa)  157.707  174.425  195.9543  180.083
-#>       lub_end_of_month(dates) 1087.749 1200.990 3082.3043 1268.104
-#>         uq        max neval
-#>   187.8245   1291.148   100
-#>  1420.9665 121543.514   100
+#>                          expr      min        lq      mean   median
+#>  cal_end_of_month(dates, usa)  172.125  180.6995  225.5846  194.522
+#>       lub_end_of_month(dates) 1183.520 1266.8225 3496.4070 1416.955
+#>        uq        max neval
+#>   223.248   1656.184   100
+#>  1666.184 140950.945   100
 ```
 
 Also note that the results of these are not equivalent, as
