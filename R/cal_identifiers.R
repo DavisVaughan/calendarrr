@@ -10,13 +10,21 @@ cal_is_business_day <- function(dates, cal = cal_create()) {
   cal_is_business_day_cpp(cal, dates)
 }
 
-# Note that a "holiday" = ! is_business_day()
-# so weekends show up. use (is_holiday() & !is_weekend())
-# to get only business day holidays
-
 #' @export
 cal_is_holiday <- function(dates, cal = cal_create()) {
   validate_inherits(dates, "dates", "Date")
+  
+  # Note that a "holiday" = !is_business_day()
+  # so weekends show up. use (is_holiday() & !is_weekend())
+  # to get _only_ business day holidays
+  cal_is_holiday_cpp(cal, dates) & !cal_is_weekend(dates, cal)
+}
+
+#' @export
+cal_is_holiday_or_weekend <- function(dates, cal = cal_create()) {
+  validate_inherits(dates, "dates", "Date")
+  
+  # This is the default QuantLib behavior so we include it
   cal_is_holiday_cpp(cal, dates)
 }
 
