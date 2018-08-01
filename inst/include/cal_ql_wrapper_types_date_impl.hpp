@@ -1,5 +1,5 @@
-#ifndef _cal_ql_wrapper_types_date_impl_h_
-#define _cal_ql_wrapper_types_date_impl_h_
+#ifndef cal_ql_wrapper_types_date_impl_hpp
+#define cal_ql_wrapper_types_date_impl_hpp
 
 #include "cal_ql_wrapper_types_date.hpp"
 #include <ql/time/calendar.hpp>
@@ -59,23 +59,22 @@ namespace Rcpp {
   }
   
   // non-intrusive extension via template specialisation
-  template <> SEXP wrap(const std::vector<QuantLib::Date> &dvec) {
-    int n = dvec.size();
-    Rcpp::DateVector dtvec(n);
+  template <> 
+  SEXP wrap(const std::vector<QuantLib::Date> &ql_date_vec) {
+    
+    int n = ql_date_vec.size();
+    Rcpp::DateVector date_vec(n);
+    
     for (int i = 0; i<n; i++) {
+      
       // QL::BigInteger can cast to double
-      double dt = static_cast<double>(dvec[i].serialNumber()); 
-      dtvec[i] = Rcpp::Date(dt - ql_to_jan_1970_offset);
+      double date_double = static_cast<double>(ql_date_vec[i].serialNumber()); 
+      
+      date_vec[i] = Rcpp::Date(date_double - ql_to_jan_1970_offset);
+      
     }
-    return Rcpp::wrap(dtvec);
-  }
-  
-  // As an Integer from R to a UnitedStates Market enum value
-  template <>
-  QuantLib::UnitedStates::Market as(SEXP market_enum_val) {
-    int market_enum_int = Rcpp::as<int>(market_enum_val);
-    QuantLib::UnitedStates::Market ql_market_enum = static_cast<QuantLib::UnitedStates::Market>(market_enum_int);
-    return ql_market_enum;
+    
+    return Rcpp::wrap(date_vec);
   }
 
 }

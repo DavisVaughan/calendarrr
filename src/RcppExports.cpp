@@ -6,98 +6,135 @@
 
 using namespace Rcpp;
 
-// cal_create_cpp
-SEXP cal_create_cpp(const std::string& cal);
-RcppExport SEXP _calendarrr_cal_create_cpp(SEXP calSEXP) {
+// cal_adjust_cpp
+std::vector<QuantLib::Date> cal_adjust_cpp(List cal, std::vector<QuantLib::Date> dates, const std::string& convention);
+RcppExport SEXP _calendarrr_cal_adjust_cpp(SEXP calSEXP, SEXP datesSEXP, SEXP conventionSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const std::string& >::type cal(calSEXP);
-    rcpp_result_gen = Rcpp::wrap(cal_create_cpp(cal));
+    Rcpp::traits::input_parameter< List >::type cal(calSEXP);
+    Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type dates(datesSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type convention(conventionSEXP);
+    rcpp_result_gen = Rcpp::wrap(cal_adjust_cpp(cal, dates, convention));
     return rcpp_result_gen;
 END_RCPP
 }
-// cal_add_holiday_cpp
-SEXP cal_add_holiday_cpp(SEXP cal_sexp, std::vector<QuantLib::Date> holidays);
-RcppExport SEXP _calendarrr_cal_add_holiday_cpp(SEXP cal_sexpSEXP, SEXP holidaysSEXP) {
+// cal_advance_cpp
+std::vector<QuantLib::Date> cal_advance_cpp(List cal, std::vector<QuantLib::Date> dates, const int& n, const std::string& unit, const std::string& convention, bool end_of_month);
+RcppExport SEXP _calendarrr_cal_advance_cpp(SEXP calSEXP, SEXP datesSEXP, SEXP nSEXP, SEXP unitSEXP, SEXP conventionSEXP, SEXP end_of_monthSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< SEXP >::type cal_sexp(cal_sexpSEXP);
-    Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type holidays(holidaysSEXP);
-    rcpp_result_gen = Rcpp::wrap(cal_add_holiday_cpp(cal_sexp, holidays));
+    Rcpp::traits::input_parameter< List >::type cal(calSEXP);
+    Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type dates(datesSEXP);
+    Rcpp::traits::input_parameter< const int& >::type n(nSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type unit(unitSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type convention(conventionSEXP);
+    Rcpp::traits::input_parameter< bool >::type end_of_month(end_of_monthSEXP);
+    rcpp_result_gen = Rcpp::wrap(cal_advance_cpp(cal, dates, n, unit, convention, end_of_month));
     return rcpp_result_gen;
 END_RCPP
 }
-// cal_remove_holiday_cpp
-SEXP cal_remove_holiday_cpp(SEXP cal_sexp, std::vector<QuantLib::Date> holidays);
-RcppExport SEXP _calendarrr_cal_remove_holiday_cpp(SEXP cal_sexpSEXP, SEXP holidaysSEXP) {
+// cal_business_days_between_cpp
+std::vector<boost::int32_t> cal_business_days_between_cpp(List cal, std::vector<QuantLib::Date> from, std::vector<QuantLib::Date> to, bool include_first, bool include_last);
+RcppExport SEXP _calendarrr_cal_business_days_between_cpp(SEXP calSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP include_firstSEXP, SEXP include_lastSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< SEXP >::type cal_sexp(cal_sexpSEXP);
-    Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type holidays(holidaysSEXP);
-    rcpp_result_gen = Rcpp::wrap(cal_remove_holiday_cpp(cal_sexp, holidays));
+    Rcpp::traits::input_parameter< List >::type cal(calSEXP);
+    Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type to(toSEXP);
+    Rcpp::traits::input_parameter< bool >::type include_first(include_firstSEXP);
+    Rcpp::traits::input_parameter< bool >::type include_last(include_lastSEXP);
+    rcpp_result_gen = Rcpp::wrap(cal_business_days_between_cpp(cal, from, to, include_first, include_last));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cal_end_of_month_cpp
+std::vector<QuantLib::Date> cal_end_of_month_cpp(List cal, std::vector<QuantLib::Date> dates);
+RcppExport SEXP _calendarrr_cal_end_of_month_cpp(SEXP calSEXP, SEXP datesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type cal(calSEXP);
+    Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type dates(datesSEXP);
+    rcpp_result_gen = Rcpp::wrap(cal_end_of_month_cpp(cal, dates));
     return rcpp_result_gen;
 END_RCPP
 }
 // cal_list_holidays_cpp
-std::vector<QuantLib::Date> cal_list_holidays_cpp(SEXP cal_sexp, QuantLib::Date from, QuantLib::Date to, bool include_weekends);
-RcppExport SEXP _calendarrr_cal_list_holidays_cpp(SEXP cal_sexpSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP include_weekendsSEXP) {
+std::vector<QuantLib::Date> cal_list_holidays_cpp(List cal, QuantLib::Date from, QuantLib::Date to, bool include_weekends);
+RcppExport SEXP _calendarrr_cal_list_holidays_cpp(SEXP calSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP include_weekendsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< SEXP >::type cal_sexp(cal_sexpSEXP);
+    Rcpp::traits::input_parameter< List >::type cal(calSEXP);
     Rcpp::traits::input_parameter< QuantLib::Date >::type from(fromSEXP);
     Rcpp::traits::input_parameter< QuantLib::Date >::type to(toSEXP);
     Rcpp::traits::input_parameter< bool >::type include_weekends(include_weekendsSEXP);
-    rcpp_result_gen = Rcpp::wrap(cal_list_holidays_cpp(cal_sexp, from, to, include_weekends));
+    rcpp_result_gen = Rcpp::wrap(cal_list_holidays_cpp(cal, from, to, include_weekends));
     return rcpp_result_gen;
 END_RCPP
 }
 // cal_is_weekend_cpp
-std::vector<bool> cal_is_weekend_cpp(SEXP cal_sexp, std::vector<QuantLib::Date> dates);
-RcppExport SEXP _calendarrr_cal_is_weekend_cpp(SEXP cal_sexpSEXP, SEXP datesSEXP) {
+std::vector<bool> cal_is_weekend_cpp(List cal, std::vector<QuantLib::Date> dates);
+RcppExport SEXP _calendarrr_cal_is_weekend_cpp(SEXP calSEXP, SEXP datesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< SEXP >::type cal_sexp(cal_sexpSEXP);
+    Rcpp::traits::input_parameter< List >::type cal(calSEXP);
     Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type dates(datesSEXP);
-    rcpp_result_gen = Rcpp::wrap(cal_is_weekend_cpp(cal_sexp, dates));
+    rcpp_result_gen = Rcpp::wrap(cal_is_weekend_cpp(cal, dates));
     return rcpp_result_gen;
 END_RCPP
 }
-// cal_adjust_cpp
-std::vector<QuantLib::Date> cal_adjust_cpp(SEXP cal_sexp, std::vector<QuantLib::Date> dates);
-RcppExport SEXP _calendarrr_cal_adjust_cpp(SEXP cal_sexpSEXP, SEXP datesSEXP) {
+// cal_is_business_day_cpp
+std::vector<bool> cal_is_business_day_cpp(List cal, std::vector<QuantLib::Date> dates);
+RcppExport SEXP _calendarrr_cal_is_business_day_cpp(SEXP calSEXP, SEXP datesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< SEXP >::type cal_sexp(cal_sexpSEXP);
+    Rcpp::traits::input_parameter< List >::type cal(calSEXP);
     Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type dates(datesSEXP);
-    rcpp_result_gen = Rcpp::wrap(cal_adjust_cpp(cal_sexp, dates));
+    rcpp_result_gen = Rcpp::wrap(cal_is_business_day_cpp(cal, dates));
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpp_hello_world
-NumericVector rcpp_hello_world();
-RcppExport SEXP _calendarrr_rcpp_hello_world() {
+// cal_is_holiday_cpp
+std::vector<bool> cal_is_holiday_cpp(List cal, std::vector<QuantLib::Date> dates);
+RcppExport SEXP _calendarrr_cal_is_holiday_cpp(SEXP calSEXP, SEXP datesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
+    Rcpp::traits::input_parameter< List >::type cal(calSEXP);
+    Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type dates(datesSEXP);
+    rcpp_result_gen = Rcpp::wrap(cal_is_holiday_cpp(cal, dates));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cal_is_end_of_month_cpp
+std::vector<bool> cal_is_end_of_month_cpp(List cal, std::vector<QuantLib::Date> dates);
+RcppExport SEXP _calendarrr_cal_is_end_of_month_cpp(SEXP calSEXP, SEXP datesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type cal(calSEXP);
+    Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type dates(datesSEXP);
+    rcpp_result_gen = Rcpp::wrap(cal_is_end_of_month_cpp(cal, dates));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_calendarrr_cal_create_cpp", (DL_FUNC) &_calendarrr_cal_create_cpp, 1},
-    {"_calendarrr_cal_add_holiday_cpp", (DL_FUNC) &_calendarrr_cal_add_holiday_cpp, 2},
-    {"_calendarrr_cal_remove_holiday_cpp", (DL_FUNC) &_calendarrr_cal_remove_holiday_cpp, 2},
+    {"_calendarrr_cal_adjust_cpp", (DL_FUNC) &_calendarrr_cal_adjust_cpp, 3},
+    {"_calendarrr_cal_advance_cpp", (DL_FUNC) &_calendarrr_cal_advance_cpp, 6},
+    {"_calendarrr_cal_business_days_between_cpp", (DL_FUNC) &_calendarrr_cal_business_days_between_cpp, 5},
+    {"_calendarrr_cal_end_of_month_cpp", (DL_FUNC) &_calendarrr_cal_end_of_month_cpp, 2},
     {"_calendarrr_cal_list_holidays_cpp", (DL_FUNC) &_calendarrr_cal_list_holidays_cpp, 4},
     {"_calendarrr_cal_is_weekend_cpp", (DL_FUNC) &_calendarrr_cal_is_weekend_cpp, 2},
-    {"_calendarrr_cal_adjust_cpp", (DL_FUNC) &_calendarrr_cal_adjust_cpp, 2},
-    {"_calendarrr_rcpp_hello_world", (DL_FUNC) &_calendarrr_rcpp_hello_world, 0},
+    {"_calendarrr_cal_is_business_day_cpp", (DL_FUNC) &_calendarrr_cal_is_business_day_cpp, 2},
+    {"_calendarrr_cal_is_holiday_cpp", (DL_FUNC) &_calendarrr_cal_is_holiday_cpp, 2},
+    {"_calendarrr_cal_is_end_of_month_cpp", (DL_FUNC) &_calendarrr_cal_is_end_of_month_cpp, 2},
     {NULL, NULL, 0}
 };
 

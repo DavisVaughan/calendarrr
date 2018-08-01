@@ -1,3 +1,27 @@
-cal_is_weekend <- function(cal, dates) {
-  cal$is_weekend(dates)
+#' @export
+cal_is_weekend <- function(dates, cal = cal_create()) {
+  validate_inherits(dates, "dates", "Date")
+  cal_is_weekend_cpp(cal, dates)
+}
+
+#' @export
+cal_is_business_day <- function(dates, cal = cal_create()) {
+  validate_inherits(dates, "dates", "Date")
+  cal_is_business_day_cpp(cal, dates)
+}
+
+# Note that a "holiday" = ! is_business_day()
+# so weekends show up. use (is_holiday() & !is_weekend())
+# to get only business day holidays
+
+#' @export
+cal_is_holiday <- function(dates, cal = cal_create()) {
+  validate_inherits(dates, "dates", "Date")
+  cal_is_holiday_cpp(cal, dates)
+}
+
+#' @export
+cal_is_end_of_month <- function(dates, cal = cal_create()) {
+  validate_inherits(dates, "dates", "Date")
+  cal_is_end_of_month_cpp(cal, dates)
 }
