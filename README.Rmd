@@ -15,7 +15,11 @@ knitr::opts_chunk$set(
 
 # calendarrr
 
-The goal of `calendarrr` is to provide an R frontend to the `QuantLib` _Calendar_
+The goal of `calendarrr` is to enhance the current ecosystem of date manipulation packages
+out there, mainly `lubridate`, by adding date calculation methods that respect 
+customizable business days and holidays.
+
+`calendarrr` provides an R frontend to the `QuantLib` _Calendar_
 library. This package shamelessly rips out sections of `QuantLib` corresponding
 to calendar calculations, and exposes them as the S3 class, `calendar`.
 

@@ -3,10 +3,15 @@
 
 # calendarrr
 
-The goal of `calendarrr` is to provide an R frontend to the `QuantLib`
-*Calendar* library. This package shamelessly rips out sections of
-`QuantLib` corresponding to calendar calculations, and exposes them as
-the S3 class, `calendar`.
+The goal of `calendarrr` is to enhance the current ecosystem of date
+manipulation packages out there, mainly `lubridate`, by adding date
+calculation methods that respect customizable business days and
+holidays.
+
+`calendarrr` provides an R frontend to the `QuantLib` *Calendar*
+library. This package shamelessly rips out sections of `QuantLib`
+corresponding to calendar calculations, and exposes them as the S3
+class, `calendar`.
 
 ## Related work
 
@@ -159,12 +164,12 @@ microbenchmark::microbenchmark(
   lub_end_of_month(dates)
 )
 #> Unit: microseconds
-#>                          expr      min        lq      mean   median
-#>  cal_end_of_month(dates, usa)  172.125  180.6995  225.5846  194.522
-#>       lub_end_of_month(dates) 1183.520 1266.8225 3496.4070 1416.955
-#>        uq        max neval
-#>   223.248   1656.184   100
-#>  1666.184 140950.945   100
+#>                          expr      min        lq      mean    median
+#>  cal_end_of_month(dates, usa)  163.334  179.8795  205.3536  189.6625
+#>       lub_end_of_month(dates) 1074.118 1204.3595 3248.6423 1263.8750
+#>         uq        max neval
+#>   203.1485   1007.464   100
+#>  1488.0445 132263.262   100
 ```
 
 Also note that the results of these are not equivalent, as
