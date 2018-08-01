@@ -1,3 +1,4 @@
+#' @export
 print.calendar <- function(x, ...) {
   
     extra_holidays <- get_extra_holidays(x)
