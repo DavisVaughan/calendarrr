@@ -5,7 +5,7 @@
 #define cal_quantlib_types_hpp
 
 // Date types located here
-#include "ql/time/date.hpp"
+#include <ql/time/date.hpp>
 
 // Include RcppCommon.h NOT Rcpp.h
 #include <RcppCommon.h>

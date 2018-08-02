@@ -1,7 +1,21 @@
 # Makevars
 
-PKG_CPPFLAGS = -I./ql/include -I../inst/include
+# -I . says to include everything in ./ as potential headers and reference from
+#     that point. So we can use the standard <ql/time/calendars/argentian.hpp>
+#     notation.
+
+# -I ../inst/include is where my custom headers are located
+
+PKG_CPPFLAGS = -I . -I ../inst/include
+
+# SOURCES are the files you want R CMD SHLIB to compile. We want to compile 
+# everything in the src/ top level directory and at each sublevel that is 
+# a *.cpp file. There are "better" ways to do this so we don't have to list
+# each sublevel, but this is fine for me.
 
 SOURCES = $(wildcard ./*.cpp ql/*.cpp ql/utilities/*.cpp ql/time/*.cpp ql/time/calendars/*.cpp)
+
+# OBJECTS I guess declare what your cpp files are going to become. We want them
+# to all become .o files in the same location as their .cpp counterpart.
 
 OBJECTS = $(SOURCES:.cpp=.o)
