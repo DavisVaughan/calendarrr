@@ -4,14 +4,12 @@
 #include <ql/time/calendar.hpp>
 #include <ql/time/date.hpp>
 
-// Required because this get's moved into calendarrr.h
-#include "cal_quantlib_types.hpp"
-
 #include <Rcpp.h>
 using namespace Rcpp;
 
-// Calendar creation functions used in other cpp files for setup and teardown
-// of calendars
+// We need to know how to setup and reset Calendar objects in our other cpp
+// files. We need to include cal_add_holiday_cpp() as well because it is in
+// cal_create_cpp()
 
 QuantLib::Calendar cal_create_cpp(List cal);
 

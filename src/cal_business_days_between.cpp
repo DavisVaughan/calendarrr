@@ -1,7 +1,9 @@
+#include <ql/time/calendar.hpp>
+#include <ql/time/date.hpp>
+using namespace QuantLib;
+
 #include "cal_quantlib_types.hpp"
 #include "cal_creation.hpp"
-
-using namespace QuantLib;
 
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -10,10 +12,10 @@ using namespace Rcpp;
 
 // [[Rcpp::export]]
 std::vector<boost::int32_t> cal_business_days_between_cpp(List cal, 
-                                             std::vector<QuantLib::Date> from, 
-                                             std::vector<QuantLib::Date> to, 
-                                             bool include_first = true, 
-                                             bool include_last = false) {
+                                                          std::vector<QuantLib::Date> from, 
+                                                          std::vector<QuantLib::Date> to, 
+                                                          bool include_first = true, 
+                                                          bool include_last = false) {
   
   // Create with holidays
   QuantLib::Calendar cal_obj = cal_create_cpp(cal);

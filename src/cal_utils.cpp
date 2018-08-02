@@ -1,3 +1,6 @@
+#include <ql/time/businessdayconvention.hpp>
+#include <ql/time/timeunit.hpp>
+
 #include "cal_utils.hpp"
 
 #include <Rcpp.h>
@@ -48,5 +51,6 @@ QuantLib::TimeUnit get_time_unit(const std::string &unit) {
   
   else
     warning("Unknown `unit`, defaulting to 'Days'.");
+  
   return QuantLib::Days;
 }

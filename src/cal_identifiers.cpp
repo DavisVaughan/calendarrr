@@ -1,7 +1,9 @@
+#include <ql/time/calendar.hpp>
+#include <ql/time/date.hpp>
+using namespace QuantLib;  
+
 #include "cal_quantlib_types.hpp"
 #include "cal_creation.hpp"
-
-using namespace QuantLib;  
 
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -16,7 +18,7 @@ std::vector<bool> cal_is_weekend_cpp(List cal, std::vector<QuantLib::Date> dates
   
   std::vector<bool> weekends(n);
   
-  for (int i=0; i<n; i++) {
+  for (int i = 0; i < n; i++) {
     weekends[i] = cal_obj.isWeekend(dates[i].weekday());
   }
   
@@ -36,7 +38,7 @@ std::vector<bool> cal_is_business_day_cpp(List cal, std::vector<QuantLib::Date> 
   
   std::vector<bool> business_days(n);
   
-  for (int i=0; i<n; i++) {
+  for (int i = 0; i < n; i++) {
     business_days[i] = cal_obj.isBusinessDay(dates[i]);
   }
   
@@ -56,7 +58,7 @@ std::vector<bool> cal_is_holiday_cpp(List cal, std::vector<QuantLib::Date> dates
   
   std::vector<bool> holidays(n);
   
-  for (int i=0; i<n; i++) {
+  for (int i = 0; i < n; i++) {
     holidays[i] = cal_obj.isHoliday(dates[i]);
   }
   
@@ -76,7 +78,7 @@ std::vector<bool> cal_is_end_of_month_cpp(List cal, std::vector<QuantLib::Date> 
   
   std::vector<bool> end_of_month(n);
   
-  for (int i=0; i<n; i++) {
+  for (int i = 0; i < n; i++) {
     end_of_month[i] = cal_obj.isEndOfMonth(dates[i]);
   }
   

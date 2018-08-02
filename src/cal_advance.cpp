@@ -1,9 +1,13 @@
+#include <ql/types.hpp>
+#include <ql/time/date.hpp>
+#include <ql/time/calendar.hpp>
+#include <ql/time/timeunit.hpp>
+#include <ql/time/businessdayconvention.hpp>
+using namespace QuantLib;  
+
 #include "cal_quantlib_types.hpp"
 #include "cal_creation.hpp"
 #include "cal_utils.hpp"
-
-#include <ql/types.hpp>
-using namespace QuantLib;  
 
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -13,13 +17,12 @@ using namespace Rcpp;
 // covered here
 
 // [[Rcpp::export]]
-std::vector<QuantLib::Date> cal_advance_cpp(
-    List cal, 
-    std::vector<QuantLib::Date> dates, 
-    const int &n,
-    const std::string &unit,
-    const std::string &convention,
-    bool end_of_month = false) {
+std::vector<QuantLib::Date> cal_advance_cpp(List cal, 
+                                            std::vector<QuantLib::Date> dates, 
+                                            const int &n,
+                                            const std::string &unit,
+                                            const std::string &convention,
+                                            bool end_of_month = false) {
   
   // Create with holidays
   QuantLib::Calendar cal_obj = cal_create_cpp(cal);

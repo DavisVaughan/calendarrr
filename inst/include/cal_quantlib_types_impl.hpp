@@ -1,8 +1,9 @@
 #ifndef cal_quantlib_types_impl_hpp
 #define cal_quantlib_types_impl_hpp
 
-#include "cal_quantlib_types.hpp"
 #include <ql/time/calendar.hpp>
+
+#include "cal_quantlib_types.hpp"
 
 #include <Rcpp.h>
 using namespace Rcpp;

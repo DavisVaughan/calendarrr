@@ -6,6 +6,9 @@
 
 #include <Rcpp.h>
 
+// Declare conversion functions that are used in other cpp files. They are
+// implemented in cal_utils.cpp
+
 QuantLib::BusinessDayConvention get_business_day_convention(const std::string &convention);
 
 QuantLib::TimeUnit get_time_unit(const std::string &unit);
