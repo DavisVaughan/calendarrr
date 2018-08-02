@@ -1,7 +1,7 @@
-#ifndef cal_ql_wrapper_types_date_impl_hpp
-#define cal_ql_wrapper_types_date_impl_hpp
+#ifndef cal_quantlib_types_impl_hpp
+#define cal_quantlib_types_impl_hpp
 
-#include "cal_ql_wrapper_types_date.hpp"
+#include "cal_quantlib_types.hpp"
 #include <ql/time/calendar.hpp>
 
 #include <Rcpp.h>

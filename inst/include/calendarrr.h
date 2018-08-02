@@ -6,7 +6,7 @@
 
 // We have to include the actual implementation header otherwise we get
 // "Symbol not found" errors
-#include "cal_ql_wrapper_types_date_impl.hpp"
+#include "cal_quantlib_types_impl.hpp"
 #include "cal_utils.hpp"
 
 #endif

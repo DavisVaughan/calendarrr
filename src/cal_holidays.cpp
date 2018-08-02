@@ -3,7 +3,7 @@
 using namespace QuantLib;  
 
 #include "cal_creation.hpp"
-#include "cal_ql_wrapper_types_date.hpp"
+#include "cal_quantlib_types.hpp"
 
 #include <Rcpp.h>
 using namespace Rcpp;

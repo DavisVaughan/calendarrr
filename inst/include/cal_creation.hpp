@@ -5,7 +5,7 @@
 #include <ql/time/date.hpp>
 
 // Required because this get's moved into calendarrr.h
-#include "cal_ql_wrapper_types_date.hpp"
+#include "cal_quantlib_types.hpp"
 
 #include <Rcpp.h>
 using namespace Rcpp;

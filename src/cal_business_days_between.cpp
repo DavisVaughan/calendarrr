@@ -1,4 +1,4 @@
-#include "cal_ql_wrapper_types_date.hpp"
+#include "cal_quantlib_types.hpp"
 #include "cal_creation.hpp"
 
 using namespace QuantLib;

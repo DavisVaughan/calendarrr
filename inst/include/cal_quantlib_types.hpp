@@ -1,8 +1,8 @@
 // Here are the defintions of the types that get wrapped and as-ed
 // Additionally, at the bottom are custom typdefs we want to use in the package
 
-#ifndef cal_ql_wrapper_types_date_hpp
-#define cal_ql_wrapper_types_date_hpp
+#ifndef cal_quantlib_types_hpp
+#define cal_quantlib_types_hpp
 
 // Date types located here
 #include "ql/time/date.hpp"

@@ -1,1 +1,7 @@
-PKG_CXXFLAGS = -I../inst/include
+# Makevars
+
+PKG_CPPFLAGS = -I./ql/include -I../inst/include
+
+SOURCES = $(wildcard ./*.cpp ql/*.cpp ql/utilities/*.cpp ql/time/*.cpp ql/time/calendars/*.cpp)
+
+OBJECTS = $(SOURCES:.cpp=.o)
