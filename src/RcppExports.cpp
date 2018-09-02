@@ -20,14 +20,14 @@ BEGIN_RCPP
 END_RCPP
 }
 // cal_advance_cpp
-std::vector<QuantLib::Date> cal_advance_cpp(List cal, std::vector<QuantLib::Date> dates, const int& n, const std::string& unit, const std::string& convention, bool end_of_month);
+std::vector<QuantLib::Date> cal_advance_cpp(List cal, std::vector<QuantLib::Date> dates, Rcpp::IntegerVector n, const std::string& unit, const std::string& convention, bool end_of_month);
 RcppExport SEXP _calendarrr_cal_advance_cpp(SEXP calSEXP, SEXP datesSEXP, SEXP nSEXP, SEXP unitSEXP, SEXP conventionSEXP, SEXP end_of_monthSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< List >::type cal(calSEXP);
     Rcpp::traits::input_parameter< std::vector<QuantLib::Date> >::type dates(datesSEXP);
-    Rcpp::traits::input_parameter< const int& >::type n(nSEXP);
+    Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type n(nSEXP);
     Rcpp::traits::input_parameter< const std::string& >::type unit(unitSEXP);
     Rcpp::traits::input_parameter< const std::string& >::type convention(conventionSEXP);
     Rcpp::traits::input_parameter< bool >::type end_of_month(end_of_monthSEXP);

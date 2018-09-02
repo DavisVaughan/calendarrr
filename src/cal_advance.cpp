@@ -19,7 +19,7 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 std::vector<QuantLib::Date> cal_advance_cpp(List cal, 
                                             std::vector<QuantLib::Date> dates, 
-                                            const int &n,
+                                            Rcpp::IntegerVector n,
                                             const std::string &unit,
                                             const std::string &convention,
                                             bool end_of_month = false) {
@@ -30,9 +30,6 @@ std::vector<QuantLib::Date> cal_advance_cpp(List cal,
   // Create BusinessDayConvention object
   QuantLib::BusinessDayConvention bdc = get_business_day_convention(convention);
   
-  // Integer = QL_INTEGER = int
-  QuantLib::Integer n_ql_int = static_cast<QuantLib::Integer>(n);
-  
   // Create TimeUnit
   QuantLib::TimeUnit time_unit = get_time_unit(unit);
   
@@ -41,7 +38,7 @@ std::vector<QuantLib::Date> cal_advance_cpp(List cal,
   std::vector<QuantLib::Date> advanced_dates(n_dates);
   
   for (int i = 0; i < n_dates; i++) {
-    advanced_dates[i] = cal_obj.advance(dates[i], n_ql_int, time_unit, bdc, end_of_month);
+    advanced_dates[i] = cal_obj.advance(dates[i], n[i], time_unit, bdc, end_of_month);
   }
   
   // Reset

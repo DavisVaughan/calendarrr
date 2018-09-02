@@ -1,3 +1,6 @@
+# TODO) Document that we allow dates and n to be vectors. Should unit and convention
+# be vectors as well?
+
 #' @export
 cal_advance <- function(dates, 
                         cal = cal_create(), 
@@ -12,6 +15,10 @@ cal_advance <- function(dates,
   validate_inherits(end_of_month, "end_of_month", "logical")
   
   n <- as_integer(n)
+  
+  recycle_n <- max(length(dates), length(n))
+  dates <- recycle(dates, recycle_n)
+  n <- recycle(n, recycle_n)
   
   cal_advance_cpp(cal, dates, n, unit, convention, end_of_month)
 }
