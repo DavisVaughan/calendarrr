@@ -10,9 +10,10 @@ Description: One paragraph description of what the package does as
 License: GPL (>= 2)
 Imports:
     glue,
-    Rcpp,
-    R6
-LinkingTo: Rcpp, BH
+    Rcpp
+LinkingTo: 
+    BH,
+    Rcpp
 RoxygenNote: 6.1.0
 URL: https://github.com/DavisVaughan/calendarrr
 BugReports: https://github.com/DavisVaughan/calendarrr/issues
